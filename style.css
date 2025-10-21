@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(120deg, #ffd6ec, #e7c6ff, #c8e7ff);
+  background-size: 400% 400%;
+  animation: gradientShift 12s ease infinite;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+}
+
+/* Transisi background warna */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Container */
+.container {
+  text-align: center;
+  position: relative;
+}
+
+/* Box pesan */
+.message-box {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 35px 45px;
+
+  box-shadow: 0 0 35px rgba(255, 182, 193, 0.6);
+  max-width: 360px;
+  margin: auto;
+  animation: glowPulse 3s infinite alternate;
+  font-family: 'Nunito', sans-serif;
+  color: #555;
+  font-size: 20px;
+  
+}
+
+/* Glow aura */
+@keyframes glowPulse {
+  0% { box-shadow: 0 0 25px rgba(255, 182, 193, 0.4); }
+  100% { box-shadow: 0 0 50px rgba(255, 182, 193, 0.8); }
+}
+
+/* Teks muncul pelan satu per satu */
+.message-box h1, .message-box p {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInText 1s ease forwards;
+}
+.message-box h1 { animation-delay: 0.5s; }
+.message-box p:nth-child(2) { animation-delay: 1.5s; }
+.message-box p:nth-child(3) { animation-delay: 2.5s; }
+.message-box p:nth-child(4) { animation-delay: 3.5s; }
+.message-box p:nth-child(5) { animation-delay: 4.5s; }
+.message-box p:nth-child(6) { animation-delay: 5.5s; }
+
+@keyframes fadeInText {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Tombol musik */
+#playMusic {
+  pointer-events: auto;
+  z-index: 999999;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 182, 193, 0.8);
+  border: none;
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  z-index: 999999; /* tombol selalu di atas segalanya */
+  user-select: none; /* biar gak bisa terseleksi */
+}
+
+#playMusic:hover {
+  background: rgba(255, 105, 180, 1);
+  color: white;
+  transform: scale(1.05);
+}
+
+/* Elemen terbang */
+.flower, .heart {
+  position: absolute;
+  font-size: 20px;
+  opacity: 0;
+  animation: floatUp 8s linear infinite;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh) scale(0.8);
+    opacity: 0;
+  }
+  20% { opacity: 1; }
+  100% {
+    transform: translateY(-10vh) scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* Teks atas & bawah */
+.top-text, .bottom-text {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  font-family: 'Pacifico', cursive;
+  color: #ff99cc;
+  text-shadow: 0 0 15px rgba(255, 150, 200, 0.7);
+  opacity: 0;
+  animation: fadeInSoft 2s ease forwards;
+}
+
+.top-text {
+  top: 30px;
+  font-size: 28px;
+  animation-delay: 1s;
+}
+
+.bottom-text {
+  bottom: 25px;
+  font-size: 22px;
+  font-family: 'Pacifico', cursive;
+  background: linear-gradient(90deg, #ff5fa2, #ff82c2, #c97fff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 12px rgba(255, 120, 170, 0.6);
+  animation-delay: 2s;
+  opacity: 0;
+  animation: fadeInSoft 2s ease forwards;
+}
+
+/* Animasi teks lembut */
+@keyframes fadeInSoft {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .message-box {
+    padding: 25px;
+    font-size: 14px;
+    max-width: 260px;
+  }
+  .top-text { font-size: 22px; }
+  .bottom-text { font-size: 18px; }
+}
+
+@keyframes fadeInPhoto {
+  from { opacity: 0; transform: translate(-50%, -20px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+.photo-top {
+  position: fixed;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 100px;
+  border-radius: 20px;
+  object-fit: cover;
+  box-shadow: 0 0 20px rgba(255, 182, 193, 0.7);
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  opacity: 0;
+  animation: fadeInPhoto 1.8s ease forwards;
+}
+
+
+
+@keyframes fadeInPhoto {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -20px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-600%, 25) scale(2);
+  }
+}
+@media (max-width: 768px) { 
+    .photo-top { 
+        top: 110px; 
+    } 
+}
+
+.bokeh-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, transparent 70%);
+}
+
+.bokeh-background::before,
+.bokeh-background::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.4) 2px, transparent 3px),
+    radial-gradient(circle, rgba(255,182,193,0.4) 2px, transparent 3px),
+    radial-gradient(circle, rgba(255,255,255,0.3) 1.5px, transparent 3px);
+  background-size: 200px 200px, 300px 300px, 400px 400px;
+  animation: moveBokeh 40s linear infinite;
+}
+
+@keyframes moveBokeh {
+  0% { transform: translate(0,0); }
+  50% { transform: translate(-100px, 100px); }
+  100% { transform: translate(0,0); }
+}
